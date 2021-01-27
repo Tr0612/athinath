@@ -1,0 +1,295 @@
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock title %}</title>
+
+  <!--Bootstrap Links-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!--Font Awesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <!--CSS Links-->
+  <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
+</head>
+
+<body >
+
+    <!--Overlay Search Bar Here-->
+    <div id="myOverlay" class="overlay">
+        <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+        <div class="overlay-content">
+          <form action="{% url 'search' %}" method="GET">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+      <!--Overlay Search Bar JS Here-->
+      <script>
+        function openSearch() {
+          document.getElementById("myOverlay").style.display = "block";
+        }
+        
+        function closeSearch() {
+          document.getElementById("myOverlay").style.display = "none";
+        }
+        </script>
+
+        
+  <!--Top Nav bar-->
+  <header >
+    <nav class="navbar" style="border-radius: 0px; background-color: #1363AA; margin-bottom: 0px; ">
+         <div class="container-fluid">
+
+                        <!--Image logo here-->
+           <div class="navbar-header">
+             <div class="imagelogo">
+               <a href="#"><img src="C:/Users/ndrev/My PC (RevanthPC)/Desktop/ecommerce-main/ecommerce/shopzap/logo.PNG" class="logo" id="imagelogoid" alt="logo"></a>
+             </div>
+           </div>
+           
+           
+           <span>
+            <!--Menu Bar-->
+  <div class="navbar-header" style="height: 40px;">
+      <!--MenuBar Icon-->
+      <div class="navbar-toggle" style="bottom: 0px;">  
+        <button type="button"  style=" margin: 0px; color: white; " class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span><i class="fa fa-bars fa-lg"  aria-hidden="true"></i></span>                        
+        </button>
+       </div>
+
+
+       <!--Cart-->
+       <div class="navbar-toggle" >
+        <a href="{% url 'cart_detail' %}"><i class="fa fa-shopping-cart fa-lg"  style=" color: white; margin-top: 8px;"aria-hidden="true"></i></a>
+        </div>
+
+        <!--Search-->
+       <div class="navbar-toggle" >
+        <a href="#search"><i class="fa fa-search fa-lg" id="searchiconmini" onclick="openSearch()" style=" color: white; margin-top: 8px;"aria-hidden="true"></i></a>
+        </div>
+        
+
+       <!--Search-->
+       <div class="navbar-toggle" style="bottom: 0px;">         
+        <form action="{% url 'search' %}" method="GET">
+          <input type="text" name="search" placeholder="Search.." class="searchmenubar">
+        </form>
+        </div>
+      
+       <!--Logo -->
+       <div class="navbar-toggle" id="logomenunavbar" >
+        <div class="logomenubar"> 
+          <a href="#home"><img  src="C:/Users/ndrev/My PC (RevanthPC)/Desktop/ecommerce-main/ecommerce/shopzap/logo.PNG" class="imagelogomenu"  alt="logo"></a>
+        </div>
+      </div>
+
+</div>
+      </span>
+
+          <!--Search bar which gets disapperas at menu bar view-->
+           <div class="mainsearchbar">
+             <form class="navbar-form navbar-left" action="{% url 'search' %}" style="padding-left: 10%; padding-top: 10px; margin-bottom: 0px;" method="GET"  >
+               <div class="input-group" id="searchbarmain">
+                 <input type="text" class="form-control" placeholder="Search" name="search" style="border-radius: 0px; width: 100%;" >
+                 <div class="input-group-btn" style="bottom: 10px;">
+                   <button class="btn btn-default" style="height: 34px; width: 60px; "type="submit">
+                     <i class="glyphicon glyphicon-search fa-sm"></i>
+                   </button>
+                 </div> 
+               </div>
+             </form>
+           </div>
+    
+           <!--Contents must be redirected Topbar contents-->
+             <ul class="nav navbar-nav " id="topcontentbar">
+             <li ><a href="{% url 'cart_detail' %}" class="upperbarcontent ">Cart</a></li>
+             <li><a href="#" class="upperbarcontent">About</a></li>
+             <li><a href="#" class="upperbarcontent">Contact</a></li>
+           </ul>
+         </div>
+       </nav> 
+
+     </header>
+
+     <!--TopNav Bar Category with its drop down content-->
+     <nav class="navbar " id="mainnavbar"  style="border-top: solid 1px #f2f2f2;box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);background: #FFFFFF">
+      <div class="container-fluid">    
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav" >
+
+            <!--Needed for space-->
+            <li class="nav-item dropdown" >
+              <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" id="covid19care" > </a>
+           </li>
+            <li class="nav-item dropdown" >
+              <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown"  >Covid-19 Care </a>
+               <ul class="dropdown-menu">
+                 <li><a class="dropdown-item" href="#" > Submenu item 1</a></li>
+                 <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
+                 <li><a class="dropdown-item" href="#" > Submenu item 3</a></li>
+                 <li><a class="dropdown-item" href="#"> Submenu item 4</a></li>
+                </ul>
+           </li>
+           <li class="nav-item dropdown">
+            <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Electronics  </a>
+             <ul class="dropdown-menu">
+               <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
+               <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
+               <li><a class="dropdown-item" href="#" > Submenu item 3</a></li>
+               <li><a class="dropdown-item" href="#"> Submenu item 4</a></li>
+             </ul>
+         </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown"> Health & Fitness  </a>
+           <ul class="dropdown-menu">
+             <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
+             <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
+           </ul>
+       </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Homewares  </a>
+         <ul class="dropdown-menu">
+           <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
+           <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
+         </ul>
+     </li>
+     <li class="nav-item dropdown">
+      <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown"> Gifts </a>
+       <ul class="dropdown-menu">
+         <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
+         <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
+       </ul>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Specials </a>
+       <ul class="dropdown-menu">
+         <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
+         <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
+       </ul>
+    </li>
+    
+          <li class="extratopcontent">
+            <a class="nav-link  dropdown-toggle"  href="#" data-toggle="dropdown"  >About </a>
+          </li>
+          <li class="extratopcontent">
+            <a class="nav-link  dropdown-toggle"  href="#" data-toggle="dropdown"  >Contact </a>
+         </li>
+         
+          </ul>
+        </div>
+      </div>
+    </nav>
+   
+</body>
+    
+{% block main %}
+
+<script type="text/javascript">
+
+  function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+              var cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+
+
+  function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
+
+
+
+  let device = getCookie('device')
+
+  if (device == null || device == undefined){
+      device = uuidv4()
+  }
+
+  document.cookie ='device=' + device + ";domain=;path=/"
+
+</script>
+{% endblock main %}
+<!--Footer Here-->
+
+
+<div id="footer">
+<footer  style="background-color: #2c292f;"  >
+  <div class="container" style=" padding-top: 30px;padding-bottom: 20px;">
+      <div class="row ">
+          <div class="col-md-4 text-center text-md-left ">
+              
+              <div class="py-0">
+                  <h3 class="my-4 text-white"><span class="mx-2" style="color: #1363AA;font-weight:600">Adhinaath Enterprises</span></h3>
+
+                  <p class="footer-links" style="font-weight: 600;">
+                    <!--Quick links must be redirected-->
+                      <a class="text-white" href="#">Home</a>
+                      |
+                      <a class="text-white" href="#">Category</a>
+                      |
+                      <a class="text-white" href="#">Cart</a>
+                  </p>
+                  <p class="text-light py-4 mb-4">&copy;2020 Adhinaath Enterprises Pvt. Ltd.</p>
+              </div>
+          </div>
+          
+          <div class="col-md-4 text-white text-center text-md-left ">
+              <div class="py-2 my-4">
+                  <div>
+                    <!--Address here-->
+                      <p class="text-white" style="color: #a19a9a;"> <i class="fa fa-map-marker mx-2 "></i>
+                              Door No. G2, No.15, Susho Sagar Apartments,21st Avenue,Ashok Nagar , Chennai-600083</p>
+                  </div>
+
+                  <div> 
+                    <!--Phone number here-->
+                      <p style="color: #a19a9a;"><i class="fa fa-phone  mx-2 "></i> +91 7550096992</p>
+                  </div>
+                  <div>
+                    <!--Email here-->
+                      <p><i class="fa fa-envelope  mx-2"></i><a href="mailto:info@adhinaathenterprises.com">info@adhinaathenterprises.com</a></p>
+                  </div>  
+              </div>  
+          </div>
+          
+          <div class="col-md-4 text-white my-4 text-center text-md-left ">
+            <!--About us Here-->
+              <span style="font-weight: 600; color: #a19a9a;">About Us</span>
+    <p class=" my-2" >We are more enthusiastic to take up your orders with great courage and get it delievered to your percise location</p>
+              <div class="py-2" >
+                  <a href="#"><i class="fab fa-facebook fa-2x mx-3" style="color: #1363AA;" ></i></a>
+                  <a href="#"><i class="fab fa-google-plus fa-2x  mx-3" style="color: #1363AA;"></i></a>
+                  <a href="#"><i class="fab fa-twitter fa-2x  mx-3" style="color: #1363AA;"></i></a>
+                  <a href="#"><i class="fab fa-youtube fa-2x  mx-3" style="color: #1363AA;"></i></a>
+              </div>
+          </div>
+      </div>  
+  </div>
+</footer>
+</div>
+
+</html>

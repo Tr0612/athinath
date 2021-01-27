@@ -1,0 +1,93 @@
+{% extends 'site_base.html' %}
+{% load static %}
+{% block title %}{{product.product_name}}|{{product.product_category}}{% endblock title %}
+{% block main %}
+<link rel="stylesheet" href="{% static 'styles/productcontent.css' %}">
+<div class="container" >
+  <div class="card" style="margin-top: 0px;">
+    <div class="container-fliud">
+      <div class="wrapper row">
+        <div class="preview col-md-6">
+          
+          <!--Images Here -->
+          <div class = "product-imgs">
+            <div class = "img-display">
+              <div class = "img-showcase"><!--Big Product Display Here-->
+                <img style="object-fit: contain;" src = "{{product.productimage_1.url}}" alt = "product image">
+                <img style="object-fit: contain;" src = "{{product.productimage_1.url}}" alt = "product image">
+                <img style="object-fit: contain;" src = "http://placekitten.com/400/252" alt = "product image">
+                <img style="object-fit: contain;" src = "http://placekitten.com/400/252" alt = "product image">
+              </div>
+            </div>
+
+            <!--Sub Images Here (Bottom to Big Image)-->
+            <div class = "img-select" style="margin:auto">
+              <div class = "img-item">
+                <a href = "#" data-id = "1">
+                  <img style="object-fit: contain;height:120px;width:120px"src = "{{product.productimage_1.url}}" id ="img" alt = "product image">
+                </a>
+              </div>
+              <div class = "img-item">
+                <a href = "#" data-id = "2">
+                  <img style="object-fit: contain;height:120px;width:120px" src = "http://placekitten.com/400/252" id ="img" alt = "product image">
+                </a>
+              </div>
+              <div class = "img-item">
+                <a href = "#" data-id = "3">
+                  <img style="object-fit: contain;height:120px;width:120px" src = "http://placekitten.com/400/252" id ="img" alt = "product image">
+                </a>
+              </div>
+              <div class = "img-item">
+                <a href = "#" data-id = "4">
+                  <img style="object-fit: contain;height:120px;width:120px" src = "http://placekitten.com/400/252" id ="img" alt = "product image">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Product Details Content-->
+        <div class="details col-md-6" style="margin-left: 10px;">
+
+          <!--Product Name here-->
+          <h3 class="product-title" >{{product.product_name}}</h3>
+          <!--<div class = "product-price">
+            !--Old Price Here--
+            <p class = "last-price">Old Price: <span>₹{{product.product_old_prize}}</span></p>
+            <!-New Price Here->
+            <p class = "new-price">New Price: <span>₹{{product.product_prize}}</span></p>
+          </div>-->
+
+          <!--Product Description-->
+          <p class="product-description">{{product.product_description}}.</p>
+          <div class = "product-detail">
+            <ul style="display: grid;">
+
+              <!--Product Code-->
+              <li>Product code: <span>{{product.product_code}}</span></li>
+              <!--Product Category-->
+              <li>Category: <span>{{product.product_category}}</span></li>
+              <!--Product Customization-->
+              <li>Customization: <span>{{product.product_customization}}</span></li>
+              <!--Product Minimum Quantity-->
+              <li>Minimum Quantity: <span>{{product.product_min_quantity}}</span></li>
+            </ul>
+          </div>
+
+          <!--Add to Cart + Quantity here-->
+          <div class = "purchase-info">
+            <!--Set Minium quantity value at min= 'Minimum Quantity'-->
+            <!--<input type = "number" min = {{product.product_min_quantity}} value = {{product.product_min_quantity}}>-->
+            
+            <a class="btn" href="{% url 'cart_add' product.id %}">Add to cart <i class="fas fa-shopping-cart"></i></a>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/script.js' %}"></script>
+
+
+
+{% endblock main %}

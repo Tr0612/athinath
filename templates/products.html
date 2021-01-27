@@ -1,0 +1,56 @@
+{% extends 'site_base.html' %}
+{% load static %}
+{% block main %}
+<link rel="stylesheet" href="{% static 'styles/productpage.css' %}">
+<main>
+  
+    <div class="container"> 
+         <div style="padding-bottom: 10px;">
+        <div class="span9">
+          <!--Product bar content-->
+        <h3 style="font-family: 'Rubik', sans-serif; font-weight: 600; font-size: 18px;" > PRODUCTS 
+          <small class="pull-right" style="padding-left: 5px;padding-top: 4px ;" id="prodsortcont">
+            <!--Product Sort by-->
+           
+          </small>
+          <small class="pull-right">
+            <!--Product Sort by-->
+         
+          </small>
+    </h3>
+    </div>
+    </div> 
+    <h1>{{notfound}}</h1>
+     <div class="row">
+                <!--Product1-->
+                {% for item in items %}
+                <div class="col-md-3 col-sm-6">
+            <!--Products are in grid view-->
+                    <div class="product-grid">
+                      <!--Image view - Pass same images for both pic-1 and pic-2 (*dont remove pic1 and pic2. If removed undo)-->
+                        <div class="product-image">
+                            <a href="#">
+                                <img class="pic-1" src="{{item.productimage_1.url}}">
+                                <img class="pic-2" src="https://images.unsplash.com/photo-1546938576-04917ec516ee?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                            </a>                           
+                        </div>
+                        
+                        <!--Product details Here-->
+                        <div class="product-content">
+                            <h3 class="title"><a href="{% url 'detail' item.id %}">{{item.product_name}}</a></h3>
+                      
+                            <a class="add-to-cart" href="{% url 'cart_add' item.id %}">+ Add To Cart</a>
+                        </div>
+                        
+                    </div>
+                      </div> 
+{% endfor %}
+                 <!--Product2-->     
+                
+
+                
+            </div>
+        </div>
+        
+    </main>    
+{% endblock main %}

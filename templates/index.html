@@ -1,0 +1,484 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Athinath homepage</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+
+<!--bootstrap cdn & slick cdn-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+
+
+<!-- font awesome -->
+<script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Changa:wght@300&family=Saira+Condensed:wght@600&display=swap" rel="stylesheet">
+<!--custom style sheet-->
+<link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/home.css' %}">
+
+<!--carousel-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+
+
+  </style>
+</head>
+<body>
+
+
+    <!-- navbar home-->
+    <div class="topnav">
+        <a href="#contact">ADHINAATH</a>
+         <a  href="{% url 'cart_detail' %}" style="float:right">CART</a>
+         <a href="# about" style="float:right">ABOUT</a>
+         <a href="#about" style="float:right">HOME</a>
+        
+         <form method="GET" action="{% url 'search' %}">
+             <!--{% csrf_token %}-->
+            <input type="text" name="search" placeholder="Search.." style="float: right;">
+        </form>
+       </div>
+
+  <!--carousel-->
+
+  <div class="container-fluid">
+      <br>
+      
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox" >
+        
+          <div class="item ">
+            <img src="{{coursel.image.url}}" alt="nia" width="460px" height="345px" >
+
+          </div>
+          <div class="item active ">
+            <img src="{{coursel_2.image.url}}" alt="Chania" width="460px" height="345px" >
+
+          </div>
+          <div class="item ">
+            <img src="{{coursel_3.image.url}}" alt="nia" width="460px" height="345px" >
+
+          </div>
+          <div class="item ">
+            <img src="{{coursel_4.image.url}}" alt="nia" width="460px" height="345px" >
+
+          </div>
+          
+        
+        
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      
+    </div>
+    
+<!--categories  slider -->
+<div class="container-fluid" style="width: 100% ;background-color: white;">
+    <h1 class="slick-title-cat"
+    style="text-align: center;
+    font-weight: bold;
+    color: darkgray;
+    font-family: 'Rubik', sans-serif;"
+    >Categories</h1>
+    <div class="row slider">
+        {% for i in cat %}
+        <div class="col-md-12">
+            
+            <div class="details-cat">
+                <img class="slick-img-cat" src="{{i.image.url}}">
+                <h2><a href="/product/{{i.name}}" >{{i.name}}</a></h2>
+            </div>
+        </div>
+        {% endfor %}
+        <!--
+        <div class="col-md-12">
+            <div class="details-cat">
+                <img class="slick-img-cat" src="assets/mobile2.png">
+                <h2><a href="#" >Heading </a></h2>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="details-cat">
+                <img class="slick-img-cat" src="assets/pc.png">
+                <h2> <a href="#" >Heading </a></h2>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="details-cat">
+                <img class="slick-img-cat" src="assets/pillow.png">
+                <h2><a href="#" >Heading </a></h2>
+
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="details-cat">
+                <img class="slick-img-cat" src="assets/headset.png">
+                <h2> <a href="#" >Heading </a> </h2>
+
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="details-cat">
+                <img class="slick-img-cat" src="assets/tab.png">
+                <h2><a href="#" >Heading </a></h2>
+
+            </div>-->
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container-box" style="   background-color: whitesmoke;">
+<div class="container" >
+    <h1 style="text-align: center;
+    padding-bottom: 7px;padding-top: 7px;
+    font-family: 'Changa', sans-serif">GIFTS</h1>
+    <div class="row">
+        {% for gift in gift %}
+
+        <div class="card">
+            <img class="card-header" style="object-fit: contain;" src="{{gift.image.url}}">
+
+
+            <a href="{% url 'products' gift.Subcategory_name %}" class="btn">{{gift.Subcategory_name}}</a>
+        </div>
+        {% endfor %}
+    <!--
+        <div class="card">
+            <img class="card-header" style="object-fit: contain;"src="assets/sale2.png">
+
+            <a href="#" class="btn">Read more readmore</a>
+        </div>
+        <div class="card">
+            <img class="card-header" style="object-fit: contain;" src="assets/sale1.jpeg">
+
+            <a href="#" class="btn">Read more</a>
+
+        </div>
+        <div class="card">
+            <img class="card-header" style="object-fit: contain;"src="assets/mobile.png">
+            <a href="#" class="btn">Read more</a>
+        </div>
+        <div class="card">
+            <img class="card-header" style="object-fit: contain;" src="assets/choco.PNG">
+            <a href="#" class="btn">Read more</a>
+        </div>
+        <div class="card">
+            <img class="card-header"style="object-fit: contain;" src="assets/circus.png">
+            <a href="#" class="btn">Read more</a>
+        </div>
+        <div class="card">
+            <img class="card-header" style="object-fit: contain;" src="assets/baby.png">
+            <a href="#" class="btn">Read more</a>
+        </div>
+        <div class="card">
+            <img class="card-header" style="object-fit: contain;" src="assets/bag1.png">
+            <a href="#" class="btn">Read more</a>
+        </div>
+    -->
+    </div>
+</div>
+</div>
+
+    <!--main section-->
+
+<!--slick slider-->
+
+<div class="container-fluid" style="width: 100% ;background-color:whitesmoke;">
+    <h1 class="slick-title">TREASURES!</h1>
+    <div class="row slider">
+        {% for item in tresures %}
+        <div class="col-md-12">
+            
+            <div class="details">
+                <img class="slick-img" src="{{item.image.url}}">
+                <h5><a href="{% url 'products' item.subcategory_name %}" >{{item.subcategory_name}}</a></h5></div>
+        </div>
+        {% endfor %}
+        <!--
+        <div class="col-md-12">
+            <div class="details">
+                <img class="slick-img" src="assets/mobile2.png">
+              <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eum fugiat amet cumque aperiam hic quis, quam nesciunt quae totam quibusdam vel sed modi pariatur earum quaerat accusantium illo deserunt!</h5>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="details">
+                <img class="slick-img" src="assets/pc.png">
+              <h5>caption</h5>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="details">
+                <img class="slick-img" src="assets/pillow.png">
+              <h5>caption</h5>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="details">
+                <img class="slick-img" src="assets/headset.png">
+                <h5>caption</h5>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="details">
+                <img class="slick-img" src="assets/tab.png">
+              <h5>caption</h5>
+            </div>
+        </div>
+    -->
+    </div>
+</div>
+
+<!--second slick slider -->
+
+<div class="container-fluid" style="width: 100% ;background-color:white;">
+    <h1 class="slick-title">PERSONALIZED!</h1>
+    <div class="row slider">
+        {% for item in personalized %}
+        <div class="col-md-12">
+
+            <div class="details">
+                <img class="slick-img" src="{{item.image.url}}">
+                <h5><a href="{% url 'products'  item.subcategory_name %}" >{{item.subcategory_name}} </a></div>
+        </div>
+{% endfor %}
+<!----
+<div class="col-md-12">
+            <div class="details">
+                <img class="slick-img" src="assets/mobile2.png">
+              <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eum fugiat amet cumque aperiam hic quis, quam nesciunt quae totam quibusdam vel sed modi pariatur earum quaerat accusantium illo deserunt!</h5>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="details">
+                <img class="slick-img" src="assets/pc.png">
+                <h5>caption</h5>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="details">
+                <img class="slick-img" src="assets/pillow.png">
+                <h5>caption</h5>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="details">
+                <img class="slick-img" src="assets/headset.png">
+                <h5>caption</h5>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="details">
+                <img class="slick-img" src="assets/tab.png">
+                <h5>caption</h5>
+            </div>
+        </div>
+    -->
+    </div>
+</div>
+
+
+<div class="container-fluid" style="width: 100% ;background-color: white;">
+
+<section class="page-section" id="services"
+  style="background-color:whitesmoke;
+  margin-bottom: 0px;
+  height: 400px;">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase" style="font-family: 'Changa', sans-serif;font-size: 30px;
+    text-transform: capitalize !important;">Get your products in 3 steps</h2>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+              <img src="{% static 'media/work1.png' %}">
+
+                <h4 class="my-3" style="font-size: 25px ; color: lightslategrey;font-weight: bold;font-family: 'Josefin Sans', sans-serif;">Add your products to the cart and place order</h4>
+              </div>
+            <div class="col-md-4">
+              <img src="{% static 'media/work2.png' %}">
+              <!--  <span class="fa-stack fa-4x">
+
+                    <i class="fas fa-laptop fa-stack-1x fa-inverse" style="color:lightblue"></i>
+                </span> -->
+                <h4 class="my-3" style="font-size: 25px ; color: lightslategrey;font-weight: bold;font-family: 'Josefin Sans', sans-serif;">Get in touch with our team and customize your products</h4>
+
+            </div>
+            <div class="col-md-4">
+              <img src="{% static 'media/delivered.png' %}">
+                <h4 class="my-3" style="font-size: 25px ;
+    padding-top: 50px; color: lightslategrey;font-weight: bold;font-family: 'Josefin Sans', sans-serif;">Get your products delivered to your location</h4>
+                </div>
+        </div>
+    </div>
+</section>
+
+     <!-- Signup-->
+     <section class="signup-section" id="signup">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 mx-auto text-center">
+                  <!--  <i class="far fa-paper-plane fa-2x mb-2 text-white"></i> -->
+                    <h2 class="text-white mb-5" style="font-family: 'Audiowide', cursive;font-size: 40px;"> Mail us !</h2>
+                    <form class="form-inline d-flex" method="POST" action="{% url 'invite' %}">
+                       
+                        {% csrf_token %}
+                        <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="text" placeholder="Enter your name..."  name="name"  required />
+                        <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="text" placeholder="Enter mobile number..." name="number"  required/>
+                        <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="email" placeholder="Enter email address..." name="email"  required/>
+                        <button class="btn btn-primary mx-auto" type="submit">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact-->
+    <section class="contact-section bg-black" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card py-4 h-100" style="width: 85%;height: 85% !important;">
+                        <div class="card-body text-center">
+                            <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                            <h4 class="text-uppercase m-0">Address</h4>
+                            <hr class="my-4" />
+                            <h5>Door No.G2, No.15 ,Susho Sagar Apartments, 21st Avenue, Ashok Nagar, Chennai-600083 </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card py-4 h-100" style="width: 85%;height: 85% !important;">
+                        <div class="card-body text-center">
+                            <i class="fas fa-envelope text-primary mb-2"></i>
+                            <h4 class="text-uppercase m-0">Email</h4>
+                            <hr class="my-4" />
+                           <!-- <div class="small text-black-50"><a href="#!">hello@yourdomain.com</a></div> -->
+                           <h5>info@adhinaathenterprises.com</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card py-4 h-100" style="width: 85%;height: 85% !important;">
+                        <div class="card-body text-center">
+                            <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                            <h4 class="text-uppercase m-0">Phone</h4>
+                            <hr class="my-4" />
+                            <h5> +91 7550096992</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="social d-flex justify-content-center">
+                <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                <a class="mx-2" href="#!"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer-->
+    <footer class="footer bg-black small text-center text-white-50" style="margin-bottom: auto;"><div class="container">Copyright ©2020 Adinaath Enterprises Pvt.Ltd. </div></footer>
+
+
+<!--js-->
+    <script  src='main.js'></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous"></script>
+
+ <script type="text/javascript">
+     $('.slider').slick({
+         dots: true,
+         infinite: true,
+         speed: 300,
+         slidesToShow: 5,
+         slidesToScroll: 3,
+         autoplay: true,
+         autoplaySpeed: 3000,
+         arrows:false,
+         responsive: [
+           {
+             breakpoint: 1024,
+             settings: {
+               slidesToShow: 3,
+               slidesToScroll: 3,
+               infinite: true,
+               dots: true,
+               arrows:false
+
+
+             }
+           },
+           {
+             breakpoint: 600,
+             settings: {
+               slidesToShow: 2,
+               slidesToScroll: 2,
+               arrows:false
+             }
+           },
+           {
+             breakpoint: 480,
+             settings: {
+               slidesToShow: 2,
+               slidesToScroll: 1,
+               arrows:false
+             }
+           }
+           // You can unslick at a given breakpoint now by adding:
+           // settings: "unslick"
+           // instead of a settings object
+         ]
+       });
+
+       function openSearch() {
+         document.getElementById("myOverlay").style.display = "block";
+       }
+
+       function closeSearch() {
+         document.getElementById("myOverlay").style.display = "none";
+       }
+       let x='{{invalid_credentials}}'
+       if (x.length>0){
+       alert('{{invalid_credentials}}');
+       }
+     </script>
+</body>
+</html>
